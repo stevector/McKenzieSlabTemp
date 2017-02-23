@@ -10,11 +10,19 @@ output is stored and/or displayed.
 """
 import numpy as np
 import slabtemp as st
+import matplotlib.pyplot as plt
 
 def slabmodel(xmax,l,rho,Cp,vx,kappa):
     output = np.zeros((l,xmax))
     for a in range(xmax):
         for b in range(l):
-            output[l-1,xmax-1] = st.slabtemp(a,b,rho,Cp,vx,l,kappa)
-    return output
+            output[b,a] = st.slabtemp(a,b,xmax,rho,Cp,vx,l,kappa)
+    plt.close('all')
+    plt.figure()
+    CS = plt.contour(output)
+    plt.clabel(CS, inline=1, fontsize=10)
+    plt.title('Slab Temperature Profile')
+    plt.ylabel('Depth (km)')
+    plt.xlabel('Distance(km)')
+    
     
