@@ -4,8 +4,9 @@ machine:
 
 dependencies:
   post:
-    - pip install -U -r dev-requirements.txt
+    - pip install matplotlib
+    - pip install numpy
 
 test:
   override:
-    - py.test test_*.py
+    - python main.py
