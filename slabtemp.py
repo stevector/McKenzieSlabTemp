@@ -18,3 +18,13 @@ def slabtemp(x,z,xm,rho,Cp,vx,l,kappa):
     R = (rho*Cp*v1*l1)/(2*kappa) #  calculate Reynolds number
     Tprime = 1-(2/np.pi)*np.exp(-1*((np.pi**2)*xp)/(2*R))*np.sin(np.pi*zp)
     return Tprime
+
+def diagonalslabT(x,z,xm,rho,Cp,vx,l,kappa):
+    v1 = vx / 31536000 #           convert cm/yr to cm/sec
+    l1 = l * 100000 #              convert km to cm
+    xp = x/xm #                    nondimensionalize x
+    zp = z/l #                     nondimensionalize z
+    R = (rho*Cp*v1*l1)/(2*kappa) #  calculate Reynolds number
+    if zp >= xp-25 or zp <= xp+25:
+        Tprime = 1-(2/np.pi)*np.exp(-1*((np.pi**2)*xp)/(2*R))*np.sin(np.pi*zp)
+        return Tprime

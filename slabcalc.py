@@ -18,11 +18,23 @@ def slabmodel(xmax,l,rho,Cp,vx,kappa):
         for b in range(l):
             output[b,a] = st.slabtemp(a,b,xmax,rho,Cp,vx,l,kappa)
     plt.close('all')
-    plt.figure()
+    plt.figure(1)
     CS = plt.contour(output)
     plt.clabel(CS, inline=1, fontsize=10)
-    plt.title('Slab Temperature Profile')
+    plt.title('Slab Thermal Structure')
     plt.ylabel('Depth (km)')
     plt.xlabel('Distance(km)')
+    plt.savefig('Slabfig')
+    
+#    diagOut = np.ones((xmax,xmax))
+#    for c in range(xmax):
+#        for d in range(xmax):
+#            diagOut[d,c] = st.diagonalslabT(a,b,xmax,rho,Cp,vx,l,kappa)
+#    plt.figure(2)
+#    # plt.ylim(ymax=0,ymin=1000)
+#    plt.contour(diagOut)
+#    plt.title('Slab Thermal Structure')
+#    plt.ylabel('Depth (km)')
+#    plt.xlabel('Distance(km)')
     
     
