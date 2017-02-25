@@ -6,6 +6,8 @@ dependencies:
   post:
     - pip install matplotlib
     - pip install numpy
+  cache_directories:
+    - /home/ubuntu/.cache/pip
 
 test:
   override:
