@@ -12,3 +12,4 @@ dependencies:
 test:
   override:
     - python main.py
+    - cp Slabfig.png $CIRCLE_ARTIFACTS
